@@ -31,9 +31,9 @@ WITH temperature_daily AS (
                 maxtemp_c as maxtemp_c,
                 mintemp_c,
                 avgtemp_c,
-                substring(city, 1, (length(city)-2)) as city,
-                substring(region, 1, (length(region)-2)) as region,
-                substring(country, 1, (length(country)-2)) as country,
+                substring(city, 2, (length(city)-1)) as city,
+                substring(region, 2, (length(region)-1)) as region,
+                substring(country, 2, (length(country)-1)) as country,
                 lat,
                 lon
             FROM temperature_daily
