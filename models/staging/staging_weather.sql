@@ -30,7 +30,7 @@ WITH temperature_daily AS (
                 date,
                 maxtemp_c as maxtemp_c,
                 mintemp_c,
-                avgtemp_c,,
+                avgtemp_c,
                 substring(city, 1, (length(city)-2)) as city,
                 substring(region, 1, (length(region)-2)) as region,
                 substring(country, 1, (length(country)-2)) as country,
