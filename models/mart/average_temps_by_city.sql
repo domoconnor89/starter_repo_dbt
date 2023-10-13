@@ -1,14 +1,18 @@
-with avg_temps as (
-    select 
+/*
+
+WITH avg_temps as (
+    SELECT 
         city,
         region,
         country,
         avg(maxtemp_c) as avg_maxtemp,
         avg(mintemp_c) as avg_mintemp,
         avg(avgtemp_c) as avg_avgtemp
-    from {{ref('prep_temp')}}
-    group by city, region, country
+    FROM {{ref('prep_temp')}}
+    GROUP BY city, region, country
 )
 
-select *
-from avg_temps
+SELECT *
+FROM avg_temps
+
+*/
