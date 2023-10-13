@@ -1,6 +1,6 @@
 WITH temperature_daily AS (
     SELECT ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'date')::VARCHAR)::date  AS date,
-        ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'hour' -> 'time')::VARCHAR)::date  AS time   
+        ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'hour' -> 'time')::VARCHAR)::date  AS time,   
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'hour' -> 'temp_c')::VARCHAR)::FLOAT AS temp_c,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'hour' -> 'wind_mph')::VARCHAR)::FLOAT AS wind_mph,
         (extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'hour' -> 'wind_dir')::VARCHAR AS wind_dir,
