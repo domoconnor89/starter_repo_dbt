@@ -35,7 +35,7 @@ WITH temperature_daily AS (
                 maxtemp_c,
                 avgtemp_c,
                 mintemp_c,
-                maxwind_kmh,
+                maxwind_kph,
                 totalprecip_mm,
                 avgvis_km,
                 avghumidity,
