@@ -10,7 +10,7 @@ WITH temperature_daily AS (
         (extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'astro' -> 'moonrise')::VARCHAR AS moonrise, 
         (extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'astro' -> 'moonset')::VARCHAR AS moonset, 
         (extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'astro' -> 'moon_phase')::VARCHAR AS moon_phase, 
-        (extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'astro' -> 'moon_illumination')::VARCHAR AS moon_illumination,
+        ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'astro' -> 'moon_illumination')::VARCHAR)::FLOAT AS moon_illumination,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'maxtemp_c')::VARCHAR)::FLOAT AS maxtemp_c,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'avgtemp_c')::VARCHAR)::FLOAT AS avgtemp_c,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'mintemp_c')::VARCHAR)::FLOAT AS mintemp_c,
