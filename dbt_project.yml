@@ -40,3 +40,5 @@ models:
         materialized: table
     mart:
         materialized: table
+
+# look into the alternative options to materialized types: table / view / incremental / cte etc.
