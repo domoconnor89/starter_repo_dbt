@@ -27,11 +27,11 @@ WITH temperature_daily AS (
                 substring(country, 2, (length(country)-2)) as country,
                 lat,
                 lon,
-                substring(sunrise, 2, (length(country)-2)) as sunrise,
-                substring(sunset, 2, (length(country)-2)) as sunset,
-                substring(moonrise, 2, (length(country)-2)) as moonrise,
-                substring(moonset, 2, (length(country)-2)) as moonset,
-                substring(moon_phase, 2, (length(country)-2)) as moon_phase,
+                substring(sunrise, 2, (length(sunrise)-2)) as sunrise,
+                substring(sunset, 2, (length(sunset)-2)) as sunset,
+                substring(moonrise, 2, (length(moonrise)-2)) as moonrise,
+                substring(moonset, 2, (length(moonset)-2)) as moonset,
+                substring(moon_phase, 2, (length(moon_phase)-2)) as moon_phase,
                 maxtemp_c,
                 avgtemp_c,
                 mintemp_c,
@@ -39,7 +39,7 @@ WITH temperature_daily AS (
                 totalprecip_mm,
                 avgvis_km,
                 avghumidity,
-                substring(condition, 2, (length(country)-2)) as condition
+                substring(condition, 2, (length(condition)-2)) as condition
             FROM temperature_daily
 )
 SELECT *
