@@ -33,6 +33,7 @@ WITH temperature_daily AS (
                 substring(moonrise, 2, (length(moonrise)-2)) as moonrise,
                 substring(moonset, 2, (length(moonset)-2)) as moonset,
                 substring(moon_phase, 2, (length(moon_phase)-2)) as moon_phase,
+                moon_illumination,
                 maxtemp_c,
                 avgtemp_c,
                 mintemp_c,
