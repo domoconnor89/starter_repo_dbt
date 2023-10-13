@@ -13,7 +13,7 @@ WITH temperature_daily AS (
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'maxtemp_c')::VARCHAR)::FLOAT AS maxtemp_c,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'avgtemp_c')::VARCHAR)::FLOAT AS avgtemp_c,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'mintemp_c')::VARCHAR)::FLOAT AS mintemp_c,
-        ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'maxwind_kmh')::VARCHAR)::FLOAT AS maxwind_kmh,
+        ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'maxwind_kph')::VARCHAR)::FLOAT AS maxwind_kph,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'totalprecip_mm')::VARCHAR)::FLOAT AS totalprecip_mm,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'avgvis_km')::VARCHAR)::FLOAT AS avgvis_km,
         ((extracted_data -> 'forecast' -> 'forecastday' -> 0 -> 'day' -> 'avghumidity')::VARCHAR)::FLOAT AS avghumidity,
@@ -27,11 +27,11 @@ WITH temperature_daily AS (
                 substring(country, 2, (length(country)-2)) as country,
                 lat,
                 lon,
-                sunrise,
-                sunset,
-                moonrise,
-                moonset,
-                moon_phase,
+                substring(sunrise, 2, (length(country)-2)) as sunrise,
+                substring(sunset, 2, (length(country)-2)) as sunset,
+                substring(moonrise, 2, (length(country)-2)) as, moonrise,
+                substring(moonset, 2, (length(country)-2)) as, moonset,
+                substring(moon_phase, 2, (length(country)-2)) as moon_phase,
                 maxtemp_c,
                 avgtemp_c,
                 mintemp_c,
@@ -39,7 +39,7 @@ WITH temperature_daily AS (
                 totalprecip_mm,
                 avgvis_km,
                 avghumidity,
-                condition
+                substring(condition, 2, (length(country)-2)) as condition
             FROM temperature_daily
 )
 SELECT *
