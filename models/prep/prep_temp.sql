@@ -2,11 +2,11 @@ WITH temp_daily AS (
     SELECT * 
     FROM {{ref('staging_weather')}}
 ),
-(UPDATE temp_daily
+UPDATE temp_daily
     SET moonrise = ''
         WHERE moonrise = 'No moonrise'
     SET moonrise = TO_CHAR(TO_TIMESTAMP(moonrise, 'HH12:MI AM'), 'HH24:MI')
-        WHERE moonrise IS NOT NULL),
+        WHERE moonrise IS NOT NULL
 moonrise_cte AS (
   SELECT
     moonrise,
@@ -14,13 +14,12 @@ moonrise_cte AS (
     LEAD(moonrise) OVER (ORDER BY some_order_column) AS next_moonrise
   FROM temp_daily
 ),
-(UPDATE temp_daily
+UPDATE temp_daily
 SET moonrise = TO_CHAR(
   (TO_TIMESTAMP(prev_moonrise, 'HH24:MI') + TO_TIMESTAMP(next_moonrise, 'HH24:MI')) / 2,
   'HH24:MI'
 )
 WHERE moonrise IS NULL
-),
 time_cnvrt AS (
     SELECT *,
         TO_CHAR(date,'Day') AS weekday,
