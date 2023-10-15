@@ -13,7 +13,7 @@ time_cnvrt AS (
         TO_CHAR(TO_TIMESTAMP(sunset, 'HH12:MI PM'), 'HH24:MI') AS sunset_24hr,
         TO_CHAR(TO_TIMESTAMP(moonrise, 'HH12:MI PM'), 'HH24:MI') AS moonrise_24hr,
         TO_CHAR(TO_TIMESTAMP(moonset, 'HH12:MI PM'), 'HH24:MI') AS moonset_24hr,
-        TO_CHAR(moon_illumination, NUMERIC) AS moon_illumination_num
+        CAST(moon_illumination AS INTEGER) AS moon_illumination_num
     FROM temp_daily
 ),
 temp_update AS (
