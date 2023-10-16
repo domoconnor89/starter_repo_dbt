@@ -11,7 +11,10 @@ time_cnvrt AS (
         date_part('year', date) AS year,
         REPLACE (moonrise, 'No moonrise', '11:59 PM') as moonrise_mid,
         REPLACE (moonset, 'No moonset', '11:59 PM') as moonset_mid,
-        CAST(moon_illumination AS INTEGER) AS moon_illumination_num
+        CAST(moon_illumination AS INTEGER) AS moon_illumination_num,
+        CASE
+            WHEN totalprecip_mm > 0 THEN 1
+            END AS rainy_day
     FROM temp_daily
 ),
 temp_update AS (
@@ -38,9 +41,7 @@ temp_update AS (
         mintemp_c,
         maxwind_kph,
         totalprecip_mm,
-        CASE
-            WHEN totalprecip_mm > 0 THEN 1
-            END AS rainy_day,
+        REPLACE (rainy_day, '', 0) AS rainy_day,
         avgvis_km,
         avghumidity,
         condition
