@@ -1,15 +1,14 @@
-WITH avg_temps as (
+WITH avg_precip as (
     SELECT 
         year,
         week,
         city,
         region,
         country,
-        MAX(maxtemp_c) as wkly_maxtemp,
-        MIN(mintemp_c) as wkly_mintemp,
-        AVG(avgtemp_c) as wkly_avgtemp
+        MAX(totalprecip_mm) as wk_day_maxprecip,
+        SUM(totalprecip_mm) as wkly_totalprecip
     FROM {{ref('prep_temp')}}
     GROUP BY year, week, city, region, country
 )
 SELECT *
-FROM avg_temps
+FROM avg_precip
