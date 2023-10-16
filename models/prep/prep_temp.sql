@@ -14,6 +14,7 @@ time_cnvrt AS (
         CAST(moon_illumination AS INTEGER) AS moon_illumination_num,
         CASE
             WHEN totalprecip_mm > 0 THEN 1
+            WHEN totalprecip_mm = 0 THEN 0
             END AS rainy_day
     FROM temp_daily
 ),
@@ -41,7 +42,7 @@ temp_update AS (
         mintemp_c,
         maxwind_kph,
         totalprecip_mm,
-        REPLACE (rainy_day, '', 0) AS rainy_day,
+        rainy_day,
         avgvis_km,
         avghumidity,
         condition
