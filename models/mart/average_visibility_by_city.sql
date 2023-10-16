@@ -1,16 +1,16 @@
-WITH avg_precip as (
+WITH avg_vis as (
     SELECT 
         year,
         week,
         city,
         region,
         country,
-        MAX(totalprecip_mm) as wk_day_maxprecip,
-        COUNT(totalprecip_mm) as wkly_precip_occurrence,
-        SUM(totalprecip_mm) as wkly_totalprecip
+        MAX(avgvis_km) as wk_day_maxvis,
+        AVG(avgvis_km) as wkly_avg_vis,
+        MIN(avgvis_km) as wk_day_minv_vis
     FROM {{ref('prep_temp')}}
     GROUP BY year, week, city, region, country
     ORDER BY city, year, week
 )
 SELECT *
-FROM avg_precip
+FROM avg_vis

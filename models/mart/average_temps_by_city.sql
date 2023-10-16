@@ -10,6 +10,7 @@ WITH avg_temps as (
         AVG(avgtemp_c) as wkly_avgtemp
     FROM {{ref('prep_temp')}}
     GROUP BY year, week, city, region, country
+    ORDER BY city, year, week
 )
 SELECT *
 FROM avg_temps
