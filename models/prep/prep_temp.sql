@@ -40,7 +40,7 @@ temp_update AS (
         totalprecip_mm,
         CASE
             WHEN totalprecip_mm > 0 THEN 1
-            END AS rainy_day?,
+            END AS rainy_day,
         avgvis_km,
         avghumidity,
         condition
