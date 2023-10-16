@@ -1,5 +1,3 @@
-/*
-
 WITH avg_temps as (
     SELECT 
         city,
@@ -11,8 +9,5 @@ WITH avg_temps as (
     FROM {{ref('prep_temp')}}
     GROUP BY city, region, country
 )
-
 SELECT *
 FROM avg_temps
-
-*/
