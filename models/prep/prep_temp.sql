@@ -9,8 +9,8 @@ time_cnvrt AS (
 		TO_CHAR(date,'week') AS week,
 		TO_CHAR(date,'month') AS month,
         TO_CHAR(date,'year') AS year,
-        REPLACE (moonrise, 'No moonrise', '00:01 AM') as moonrise,
-        REPLACE (moonset, 'No moonset', '00:01 AM') as moonset,
+        REPLACE (moonrise, 'No moonrise', '00:01 AM') as moonrise_mid,
+        REPLACE (moonset, 'No moonset', '00:01 AM') as moonset_mid,
         CAST(moon_illumination AS INTEGER) AS moon_illumination_num
     FROM temp_daily
 ),
@@ -29,8 +29,8 @@ temp_update AS (
         lon,
         TO_CHAR(TO_TIMESTAMP(sunrise, 'HH12:MI PM'), 'HH24:MI') AS sunrise_24hr,
         TO_CHAR(TO_TIMESTAMP(sunset, 'HH12:MI PM'), 'HH24:MI') AS sunset_24hr,
-        TO_CHAR(TO_TIMESTAMP(moonrise, 'HH12:MI PM'), 'HH24:MI') AS moonrise_24hr,
-        TO_CHAR(TO_TIMESTAMP(moonset, 'HH12:MI PM'), 'HH24:MI') AS moonset_24hr,
+        TO_CHAR(TO_TIMESTAMP(moonrise_mid, 'HH12:MI PM'), 'HH24:MI') AS moonrise_24hr,
+        TO_CHAR(TO_TIMESTAMP(moonset_mid, 'HH12:MI PM'), 'HH24:MI') AS moonset_24hr,
         moon_phase,
         moon_illumination_num,
         maxtemp_c,
