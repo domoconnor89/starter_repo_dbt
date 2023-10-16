@@ -9,8 +9,8 @@ time_cnvrt AS (
 		TO_CHAR(date,'week') AS week,
 		TO_CHAR(date,'month') AS month,
         TO_CHAR(date,'year') AS year,
-        REPLACE (moonrise, 'No moonrise', '00:01 AM') as moonrise_mid,
-        REPLACE (moonset, 'No moonset', '00:01 AM') as moonset_mid,
+        REPLACE (moonrise, 'No moonrise', '11:59 PM') as moonrise_mid,
+        REPLACE (moonset, 'No moonset', '11:59 PM') as moonset_mid,
         CAST(moon_illumination AS INTEGER) AS moon_illumination_num
     FROM temp_daily
 ),
