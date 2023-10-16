@@ -38,6 +38,9 @@ temp_update AS (
         mintemp_c,
         maxwind_kph,
         totalprecip_mm,
+        CASE
+            WHEN totalprecip_mm > 0 THEN 1
+            END AS rainy_day?,
         avgvis_km,
         avghumidity,
         condition
