@@ -6,7 +6,7 @@ WITH mnth_avg_precip AS (
         region,
         country,
         MAX(totalprecip_mm) as mnth_maxprecip_day,
-        SUM(rainy_day) as mnthly_precip_days,
+        CAST(SUM(rainy_day) AS FLOAT) as mnthly_precip_days,
         SUM(totalprecip_mm) as mnth_totalprecip
     FROM {{ref('prep_temp')}}
     GROUP BY year, month, city, region, country
