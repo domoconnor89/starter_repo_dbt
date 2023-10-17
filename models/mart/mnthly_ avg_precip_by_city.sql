@@ -1,4 +1,4 @@
-WITH mnth_avg_precip as (
+WITH mnth_avg_precip AS (
     SELECT 
         year,
         month,
@@ -7,10 +7,18 @@ WITH mnth_avg_precip as (
         country,
         MAX(totalprecip_mm) as mnth_maxprecip_day,
         SUM(rainy_day) as mnthly_precip_days,
-        SUM(totalprecip_mm) as mnth_totalprecip
+        SUM(totalprecip_mm) as mnth_totalprecip,
     FROM {{ref('prep_temp')}}
     GROUP BY year, month, city, region, country
     ORDER BY city, year, month
-)
+),
+update_mnthly_precip AS(
+    SELECT
+        *,
+        CASE
+            WHEN mnthly_precip_days > 0 THEN (1/mnthly_precip_days)
+            WHEN mnthly_precip_days = 0 THEN 0
+            END AS mnthly_rainfall_spread
+    FROM mnth_avg_precip)
 SELECT *
-FROM mnth_avg_precip
+FROM update_mnthly_precip
