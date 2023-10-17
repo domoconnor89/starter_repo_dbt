@@ -9,7 +9,7 @@ WITH avg_vis as (
         AVG(avgvis_km) as wkly_avg_vis,
         MIN(avgvis_km) as wk_day_minv_vis
     FROM {{ref('prep_temp')}}
-    GROUP BY year, week, city, region, country
+    GROUP BY year, month, city, region, country
     ORDER BY city, year, month
 )
 SELECT *

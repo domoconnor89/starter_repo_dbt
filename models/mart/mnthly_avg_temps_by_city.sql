@@ -9,7 +9,7 @@ WITH avg_temps as (
         MIN(mintemp_c) as wkly_mintemp,
         AVG(avgtemp_c) as wkly_avgtemp
     FROM {{ref('prep_temp')}}
-    GROUP BY year, week, city, region, country
+    GROUP BY year, month, city, region, country
     ORDER BY city, year, month
 )
 SELECT *
