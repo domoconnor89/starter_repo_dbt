@@ -5,9 +5,9 @@ WITH avg_vis as (
         city,
         region,
         country,
-        MAX(avgvis_km) as wk_day_maxvis,
-        AVG(avgvis_km) as wkly_avg_vis,
-        MIN(avgvis_km) as wk_day_minv_vis
+        MAX(avgvis_km) as mnth_maxvis_day,
+        AVG(avgvis_km) as mnthly_avg_vis,
+        MIN(avgvis_km) as mnth_minvis_day
     FROM {{ref('prep_temp')}}
     GROUP BY year, month, city, region, country
     ORDER BY city, year, month

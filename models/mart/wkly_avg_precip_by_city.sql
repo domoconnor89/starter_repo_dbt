@@ -5,7 +5,7 @@ WITH avg_precip as (
         city,
         region,
         country,
-        MAX(totalprecip_mm) as wk_day_maxprecip,
+        MAX(totalprecip_mm) as wk_maxprecip_day,
         SUM(rainy_day) as wkly_precip_days,
         SUM(totalprecip_mm) as wkly_totalprecip
     FROM {{ref('prep_temp')}}
