@@ -1,4 +1,4 @@
-WITH avg_vis as (
+WITH mnth_avg_vis as (
     SELECT 
         year,
         month,
@@ -13,4 +13,4 @@ WITH avg_vis as (
     ORDER BY city, year, month
 )
 SELECT *
-FROM avg_vis
+FROM mnth_avg_vis

@@ -1,4 +1,4 @@
-WITH avg_temps as (
+WITH mnth_avg_temps as (
     SELECT 
         year,
         month,
@@ -13,4 +13,4 @@ WITH avg_temps as (
     ORDER BY city, year, month
 )
 SELECT *
-FROM avg_temps
+FROM mnth_avg_temps

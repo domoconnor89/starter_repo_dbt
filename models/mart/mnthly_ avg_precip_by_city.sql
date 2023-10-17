@@ -1,4 +1,4 @@
-WITH avg_precip as (
+WITH mnth_avg_precip as (
     SELECT 
         year,
         month,
@@ -13,4 +13,4 @@ WITH avg_precip as (
     ORDER BY city, year, month
 )
 SELECT *
-FROM avg_precip
+FROM mnth_avg_precip
