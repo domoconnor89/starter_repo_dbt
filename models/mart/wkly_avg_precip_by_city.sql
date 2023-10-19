@@ -8,6 +8,8 @@ WITH avg_precip as (
         lat,
         lon,
         MAX(totalprecip_mm) as wk_maxprecip_day,
+        MIN(totalprecip_mm) as wk_minprecip_day,
+        AVG(totalprecip_mm) as wk_avgprecip_day,
         CAST(SUM(rainy_day) AS FLOAT) as wkly_precip_days,
         SUM(totalprecip_mm) as wkly_totalprecip
     FROM {{ref('prep_temp')}}

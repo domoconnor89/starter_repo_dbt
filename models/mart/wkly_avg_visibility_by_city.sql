@@ -8,6 +8,7 @@ WITH avg_vis as (
         lat,
         lon,
         MAX(avgvis_km) as wk_maxvis_day,
+        MIN(avgvis_km) as wk_minvis_day,
         AVG(avgvis_km) as wkly_avg_vis,
         MIN(avgvis_km) as wk_minvis_day
     FROM {{ref('prep_temp')}}
