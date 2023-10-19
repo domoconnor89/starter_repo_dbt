@@ -9,8 +9,7 @@ WITH avg_vis as (
         lon,
         MAX(avgvis_km) as wk_maxvis_day,
         MIN(avgvis_km) as wk_minvis_day,
-        AVG(avgvis_km) as wkly_avg_vis,
-        MIN(avgvis_km) as wk_minvis_day
+        AVG(avgvis_km) as wkly_avg_vis
     FROM {{ref('prep_temp')}}
     GROUP BY year, week, city, region, country, lat, lon
     ORDER BY city, year, week
